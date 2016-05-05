@@ -36,6 +36,7 @@ public class UserAreaActivity extends AppCompatActivity{
         EditText etUsername = (EditText) findViewById(R.id.etUsername);
         EditText etAge = (EditText) findViewById(R.id.etAge);
 
+        setTitle("eKandi");
 //        Buttons
         bCollection = (Button) findViewById(R.id.bCollection);
         bSync = (Button) findViewById(R.id.bSync);
@@ -81,6 +82,7 @@ public class UserAreaActivity extends AppCompatActivity{
             @Override
             public void onClick(View view){
                 Intent intent1 = new Intent(UserAreaActivity.this, Sync.class);
+                intent1.putExtra("currentDesign", currentDesign);
                 startActivity(intent1);
             }
         });
@@ -109,13 +111,13 @@ public class UserAreaActivity extends AppCompatActivity{
         design3 = getIntent().getExtras().getBoolean("design3");
         currentDesign = extras.getInt("currentDesign", 1);
         if(currentDesign == 1){
-            Toast.makeText(UserAreaActivity.this, "1", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UserAreaActivity.this, "Current design: Squirtle", Toast.LENGTH_SHORT).show();
         }
         if(currentDesign == 2){
-            Toast.makeText(UserAreaActivity.this, "2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UserAreaActivity.this, "Current design: Bulbasaur", Toast.LENGTH_SHORT).show();
         }
         if(currentDesign == 3){
-            Toast.makeText(UserAreaActivity.this, "3", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UserAreaActivity.this, "Current deisgn: Charmander", Toast.LENGTH_SHORT).show();
         }
     }
 

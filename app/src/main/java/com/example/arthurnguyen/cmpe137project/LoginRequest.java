@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginRequest extends StringRequest {
-    private static final String LOGIN_REQUEST_URL = "http://137project.comlu.com/FetchUserData.php";
+    private static final String LOGIN_REQUEST_URL = "http://arthurnguyen.net16.net/Login.php";
     private Map<String, String> params;
 
     public LoginRequest(String username, String password, Response.Listener<String> listener) {
@@ -15,6 +15,7 @@ public class LoginRequest extends StringRequest {
         params = new HashMap<>();
         params.put("username", username);
         params.put("password", password);
+
     }
 
     @Override

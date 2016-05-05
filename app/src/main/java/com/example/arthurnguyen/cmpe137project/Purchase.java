@@ -28,6 +28,7 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
     boolean design1, design2, design3;
     ImageButton bDesign1, bDesign2, bDesign3;
     int currentDesign;
+
     private LocationManager mLocationManager;
     private LocationListener mLocationListener;
     
@@ -44,6 +45,8 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
         bDesign1 = (ImageButton) findViewById(R.id.bDesign1);
         bDesign2 = (ImageButton) findViewById(R.id.bDesign2);
         bDesign3 = (ImageButton) findViewById(R.id.bDesign3);
+
+        setTitle("Purchase");
 
         // Accept data
         Bundle extras = getIntent().getExtras();
@@ -92,6 +95,7 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
                 startActivity(intent);
             }
         };
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     requestPermissions(new String[]{
@@ -121,6 +125,7 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
             @Override
             public void onClick(View view) {
                 mLocationManager.requestLocationUpdates("gps", 5000, 0, mLocationListener);
+                Toast.makeText(Purchase.this,String.valueOf(longitude) + String.valueOf(latitude),Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -160,7 +165,7 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
                         public void onClick(DialogInterface dialog, int which) {
 
                             design2 = true;   currentDesign=2;
-                            Toast.makeText(Purchase.this,"You acquired Charmander design",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Purchase.this,"You acquired Bulbasaur design",Toast.LENGTH_SHORT).show();
                         }
                     }).setNegativeButton("No", new DialogInterface.OnClickListener(){
                         @Override
@@ -181,6 +186,7 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
                 if(Math.abs(latitude - 37.3352) < .1 && Math.abs(longitude - 12.1881) < .1){
                     design3 = true;
                     currentDesign = 3;
+                    Toast.makeText(Purchase.this,"You acquired Charmander design",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(Purchase.this,"You must be at SJSU to unlock this design",Toast.LENGTH_SHORT).show();
@@ -218,6 +224,18 @@ public class Purchase extends AppCompatActivity implements OnClickListener {
 
         }
         return true;
+    }
+    @Override
+    public void onBackPressed() {
+        //                    Start activity
+        Intent intent = new Intent(this, UserAreaActivity.class);
+//                    Pass values
+        intent.putExtra("design1", design1);
+        intent.putExtra("design2", design2);
+        intent.putExtra("design3", design3);
+        intent.putExtra("currentDesign", currentDesign);
+        startActivity(intent);
+        super.onBackPressed();
     }
 
 }

@@ -23,21 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
         <Button
             android:id="@+id/send"
+            android:background="@drawable/button2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Send Pass Key"/>
-        <Button
-            android:id="@+id/clear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Clear"/>
-
+            android:layout_height="70dp"
+            android:text="Set Design"/>
 
 
         <ListView

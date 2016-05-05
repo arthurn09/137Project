@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@drawable/button1">
+
 
     <TextView
         android:id="@+id/tvWelcomeMsg"
@@ -56,46 +58,60 @@
         android:layout_below="@+id/textView2" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:text="Collection"
         android:id="@+id/bCollection"
         android:layout_below="@+id/etAge"
         android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:background="@color/LightBlue"
         android:layout_marginTop="27dp"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
         android:text="Sync"
         android:id="@+id/bSync"
+        android:background="@color/LightPink"
         android:layout_below="@+id/bCollection"
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:text="Trade"
         android:id="@+id/bTrade"
         android:layout_below="@+id/bSync"
         android:layout_alignLeft="@+id/bSync"
+        android:textStyle="bold"
+        android:background="@color/PaleVioletRed"
         android:layout_alignStart="@+id/bSync"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:text="Chat"
         android:id="@+id/bChat"
         android:layout_below="@+id/bTrade"
+        android:textStyle="bold"
         android:layout_alignLeft="@+id/bTrade"
+        android:background="@color/LightYellow"
         android:layout_alignStart="@+id/bTrade"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:text="Purchase"
+        android:layout_marginTop="10dp"
         android:id="@+id/bPurchase"
+        android:textStyle="bold"
         android:layout_below="@+id/bChat"
+        android:background="@color/LightGreen"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

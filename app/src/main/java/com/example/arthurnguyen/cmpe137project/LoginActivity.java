@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
         final Button bLogin = (Button) findViewById(R.id.bSignIn);
+        final String design1, design2, design3;
 
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,18 +47,22 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
+                            String design1 = jsonResponse.getString("design1");
+                            String design2 = jsonResponse.getString("design2");
+                            String design3 = jsonResponse.getString("design3");
 
+                            Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
+                            intent.putExtra("design1", design1);
+                            intent.putExtra("design2", design2);
+                            intent.putExtra("design3", design3);
+                            intent.putExtra("username", username);
+                            LoginActivity.this.startActivity(intent);
+                            /*
                             if (success) {
-                                String name = jsonResponse.getString("name");
-                                int age = jsonResponse.getInt("age");
 
-                                Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
-                                intent.putExtra("name", name);
-                                intent.putExtra("age", age);
-                                intent.putExtra("username", username);
-                                LoginActivity.this.startActivity(intent);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage("Login Failed")
@@ -65,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .create()
                                         .show();
                             }
+                            */
 
                         } catch (JSONException e) {
                             e.printStackTrace();

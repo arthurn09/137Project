@@ -30,6 +30,8 @@ public class Collection extends AppCompatActivity{
         bDesign1 = (ImageButton) findViewById(R.id.bDesign1);
         bDesign2 = (ImageButton) findViewById(R.id.bDesign2);
         bDesign3 = (ImageButton) findViewById(R.id.bDesign3);
+        setTitle("Collection");
+
 
         // Accept data
         Bundle extras = getIntent().getExtras();
@@ -42,28 +44,57 @@ public class Collection extends AppCompatActivity{
         currentDesign = extras.getInt("currentDesign", 1);
 
         if(currentDesign == 1){
-            Toast.makeText(Collection.this, "1", Toast.LENGTH_SHORT).show();
+            bDesign1.setColorFilter(Color.argb(0, 0, 0, 0));
         }
-        if(currentDesign == 2){
-            Toast.makeText(Collection.this, "2", Toast.LENGTH_SHORT).show();
-        }
-        if(currentDesign == 3){
-            Toast.makeText(Collection.this, "3", Toast.LENGTH_SHORT).show();
+        else{
+            if(!design1){
+                bDesign1.setColorFilter(Color.argb(247, 247, 247, 247));
+            }
+            else{
+                bDesign1.setColorFilter(Color.argb(150, 150, 150, 150));
+            }
         }
 
-        if(!design1){
-            bDesign1.setColorFilter(Color.argb(200, 200, 200, 200));
+        if(currentDesign == 2){
+            bDesign2.setColorFilter(Color.argb(0, 0, 0, 0));
         }
-        if(!design2){
-            bDesign2.setColorFilter(Color.argb(200, 200, 200, 200));
+        else{
+            if(!design2){
+                bDesign2.setColorFilter(Color.argb(247, 247, 247, 247));
+            }
+            else{
+                bDesign2.setColorFilter(Color.argb(150, 150, 150, 150));
+            }
         }
-        if(!design3){
-            bDesign3.setColorFilter(Color.argb(200, 200, 200, 200));
+
+        if(currentDesign == 3){
+            bDesign3.setColorFilter(Color.argb(0, 0, 0, 0));
+        }
+        else{
+            if(!design3){
+                bDesign3.setColorFilter(Color.argb(247, 247, 247, 247));
+            }
+            else{
+                bDesign3.setColorFilter(Color.argb(150, 150, 150, 150));
+            }
         }
         bDesign1.setOnClickListener(new View.OnClickListener(){
             @Override
         public void onClick(View view){
               if(design1 == true){
+                  bDesign1.setColorFilter(Color.argb(0, 0, 0, 0));
+                  if(!design2){
+                      bDesign2.setColorFilter(Color.argb(247, 247, 247, 247));
+                  }
+                  else{
+                      bDesign2.setColorFilter(Color.argb(150, 150, 150, 150));
+                  }
+                  if(!design3){
+                      bDesign3.setColorFilter(Color.argb(247, 247, 247, 247));
+                  }
+                  else{
+                      bDesign3.setColorFilter(Color.argb(150, 150, 150, 150));
+                  }
                   Toast.makeText(Collection.this,"Current design set to Squirtle",Toast.LENGTH_SHORT).show();
                   currentDesign = 1;
               }
@@ -73,6 +104,19 @@ public class Collection extends AppCompatActivity{
             @Override
             public void onClick(View view){
                 if(design2 == true){
+                    bDesign2.setColorFilter(Color.argb(0, 0, 0, 0));
+                    if(!design1){
+                        bDesign1.setColorFilter(Color.argb(247, 247, 247, 247));
+                    }
+                    else{
+                        bDesign1.setColorFilter(Color.argb(150, 150, 150, 150));
+                    }
+                    if(!design3){
+                        bDesign3.setColorFilter(Color.argb(247, 247, 247, 247));
+                    }
+                    else{
+                        bDesign3.setColorFilter(Color.argb(150, 150, 150, 150));
+                    }
                     Toast.makeText(Collection.this,"Current design set to Bulbasaur",Toast.LENGTH_SHORT).show();
                     currentDesign = 2;
                 }
@@ -82,6 +126,19 @@ public class Collection extends AppCompatActivity{
             @Override
             public void onClick(View view){
                 if(design3 == true){
+                    bDesign3.setColorFilter(Color.argb(247, 247, 247, 247));
+                    if(!design1){
+                        bDesign1.setColorFilter(Color.argb(247, 247, 247, 247));
+                    }
+                    else{
+                        bDesign1.setColorFilter(Color.argb(150, 150, 150, 150));
+                    }
+                    if(!design3){
+                        bDesign3.setColorFilter(Color.argb(247, 247, 247, 247));
+                    }
+                    else{
+                        bDesign3.setColorFilter(Color.argb(150, 150, 150, 150));
+                    }
                     Toast.makeText(Collection.this,"Current design set to Charmander",Toast.LENGTH_SHORT).show();
                     currentDesign = 3;
                 }
@@ -114,6 +171,19 @@ public class Collection extends AppCompatActivity{
 
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //                    Start activity
+        Intent intent = new Intent(this, UserAreaActivity.class);
+//                    Pass values
+        intent.putExtra("design1", design1);
+        intent.putExtra("design2", design2);
+        intent.putExtra("design3", design3);
+        intent.putExtra("currentDesign", currentDesign);
+        startActivity(intent);
+        super.onBackPressed();
     }
 
 }

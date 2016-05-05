@@ -28,8 +28,8 @@
         android:layout_gravity="center_horizontal"/>
 
     <ImageButton
-            android:layout_width="265dp"
-            android:layout_height="202dp"
+            android:layout_width="220dp"
+            android:layout_height="170dp"
             android:id="@+id/bDesign1"
             android:src="@drawable/squirtle"
             android:layout_alignParentTop="true"
@@ -37,18 +37,20 @@
             android:layout_alignParentStart="true"/>
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="170dp"
             android:id="@+id/bDesign2"
+            android:layout_marginTop="20dp"
             android:src="@drawable/bulbasaur"
             android:layout_below="@+id/bDesign1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
 
         <ImageButton
-            android:layout_width="253dp"
-            android:layout_height="233dp"
+            android:layout_width="220dp"
+            android:layout_height="170dp"
             android:id="@+id/bDesign3"
+            android:layout_marginTop="20dp"
             android:src="@drawable/charmander"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

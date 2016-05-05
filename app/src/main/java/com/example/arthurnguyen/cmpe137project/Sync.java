@@ -41,8 +41,7 @@ public class Sync extends AppCompatActivity {
     TextView textInfo, textStatus, textByteCnt;
     ListView listViewPairedDevice;
     LinearLayout inputPane;
-    EditText inputField;
-    Button btnSend, btnClear;
+    Button btnSend;
 
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
@@ -52,10 +51,19 @@ public class Sync extends AppCompatActivity {
     ThreadConnectBTdevice myThreadConnectBTdevice;
     ThreadConnected myThreadConnected;
 
+    int currentDesign;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
+
+        // Accept data
+        Bundle extras = getIntent().getExtras();
+        if(extras == null){
+            return;
+        }
+        currentDesign = extras.getInt("currentDesign", 1);
 
         textInfo = (TextView)findViewById(R.id.info);
         textStatus = (TextView)findViewById(R.id.status);
@@ -63,28 +71,20 @@ public class Sync extends AppCompatActivity {
         listViewPairedDevice = (ListView)findViewById(R.id.pairedlist);
 
         inputPane = (LinearLayout)findViewById(R.id.inputpane);
-        inputField = (EditText)findViewById(R.id.input);
         btnSend = (Button)findViewById(R.id.send);
         btnSend.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 if(myThreadConnected!=null){
-                    byte[] bytesToSend = inputField.getText().toString().getBytes();
+                    byte[] bytesToSend = String.valueOf(currentDesign).getBytes();
                     myThreadConnected.write(bytesToSend);
                     byte[] NewLine = "\n".getBytes();
                     myThreadConnected.write(NewLine);
                 }
             }});
 
-        btnClear = (Button)findViewById(R.id.clear);
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textStatus.setText("");
-                textByteCnt.setText("");
-            }
-        });
+
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
             Toast.makeText(this,
